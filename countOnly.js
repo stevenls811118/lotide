@@ -7,12 +7,13 @@ const countOnly = function(allItems, itemsToCount) {
   let count = 0;
   let result = {};
 
-  for (let item in itemsToCount) {
-    if (itemsToCount[item]) {
+  for (let item in itemsToCount) { // Loop through the itemstoCount
+    if (itemsToCount[item]) { // Decide which key need to be add to countList array
       countList.push(item);
     }
   }
 
+  // Create countResult array by loop through allitems array to match the items in countList
   for (let i = 0; i < countList.length; i++) {
     count = 0;
     for (let j = 0; j < allItems.length; j++) {
@@ -23,6 +24,7 @@ const countOnly = function(allItems, itemsToCount) {
     countResult.push(count);
   }
   
+  // Remove 0 count items from countList and countResult
   for (let r = 0; r < countResult.length; r++) {
     if (countResult[r] === 0) {
       countResult.splice(r, 1);
@@ -30,6 +32,7 @@ const countOnly = function(allItems, itemsToCount) {
     }
   }
 
+  // Create result object by pair countList and countResult items
   for (let a = 0; a < countList.length; a++) {
     result[countList[a]] = countResult[a];
   }
